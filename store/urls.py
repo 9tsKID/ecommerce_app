@@ -1,6 +1,6 @@
 from django.urls import path
 from .import views
-from.views import register_view, login_view, logout_view, admin_dashboard, store_home,  product_detail, add_to_cart, view_cart, remove_from_cart, clear_cart, test_session, checkout, my_orders, start_payment, payment_success, customer_dashboard
+from.views import register_view, login_view, logout_view, admin_dashboard, store_home,  product_detail, add_to_cart, view_cart, remove_from_cart, clear_cart, test_session, checkout, my_orders, start_payment, payment_success, customer_dashboard, load_products_fixture
 
 urlpatterns =[
     path("register/", register_view, name='register'),
@@ -19,6 +19,8 @@ urlpatterns =[
     path('paystack-checkout/', start_payment, name='start_payment'),
     path('payment-success/', payment_success, name='payment_success'),
     path('customer-dashboard/', customer_dashboard, name='customer_dashboard'),
+    path('load-products/', load_products_fixture, name='load_products'),
+
 
 
 

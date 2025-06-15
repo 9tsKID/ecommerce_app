@@ -15,6 +15,7 @@ from django.conf import settings
 from django.urls import reverse
 from django.http import JsonResponse
 from .models import Category
+from django.core.management import call_command
 
 
 
@@ -269,3 +270,9 @@ def payment_success(request):
     messages.success(request, f"Payment successful. Order #{order.id} placed.")
     return redirect('my_orders')
 
+def load_products_fixture(request):
+    try:
+        call_command('loaddata', 'products.json')
+        return HttpResponse("Products loaded successfully.")
+    except Exception as e:
+        return HttpResponse(f"Error: {e}")
