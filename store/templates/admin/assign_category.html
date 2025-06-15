@@ -1,0 +1,12 @@
+{% extends "admin/base_site.html" %}
+{% block content %}
+  <h2>Assign Category</h2>
+  <form method="post">{% csrf_token %}
+    {{ form.as_p }}
+    <input type="hidden" name="action" value="assign_category">
+    {% for product in products %}
+      <input type="hidden" name="{{ action_checkbox_name }}" value="{{ product.pk }}">
+    {% endfor %}
+    <button type="submit" name="apply">Apply</button>
+  </form>
+{% endblock %}

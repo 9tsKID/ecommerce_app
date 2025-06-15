@@ -1,0 +1,17 @@
+{% extends 'store/base.html' %}
+{% block content %}
+<h2>Checkout</h2>
+
+<form method="post">
+  {% csrf_token %}
+  <ul>
+    {% for item in cart_items %}
+      <li>{{ item.product.name }} — ₦{{ item.product.price|floatformat:2 }} × {{ item.quantity }} = ₦{{ item.subtotal|floatformat:2 }}</li>
+    {% endfor %}
+  </ul>
+  <h3>Total: ₦{{ total|floatformat:2 }}</h3>
+ <a href="{% url 'start_payment' %}">Proceed to Payment</a>
+</form>
+
+<a href="{% url 'view_cart' %}">← Back to Cart</a>
+{% endblock %}

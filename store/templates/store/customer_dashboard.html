@@ -1,0 +1,6 @@
+{% extends 'store/base.html' %}
+{% block content %}
+<h2>Customer Dashboard</h2>
+<p>Welcome, {{ profile.user.username }}!</p>
+<a href="{% url 'my_orders' %}">View My Orders</a>
+{% endblock %}

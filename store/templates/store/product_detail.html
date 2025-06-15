@@ -1,0 +1,16 @@
+{% extends 'store/base.html' %}
+{% block content %}
+<h2>{{ product.name }}</h2>
+
+{% if product.image %}
+  <img src="{{ product.image.url }}" width="300px">
+{% endif %}
+
+<p>{{ product.description }}</p>
+<p>Price: ₦{{ product.price|floatformat:2 }}</p>
+<form method="post" action="{% url 'add_to_cart' product.id %}">
+  {% csrf_token %}
+  <button type="submit">Add to Cart</button>
+</form>
+<a href="{% url 'store_home' %}">Back to Store</a>
+{% endblock %}
