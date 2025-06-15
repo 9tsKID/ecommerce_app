@@ -270,3 +270,9 @@ def payment_success(request):
     messages.success(request, f"Payment successful. Order #{order.id} placed.")
     return redirect('my_orders')
 
+def create_admin(request):
+    if not User.objects.filter(username='admin').exists():
+        User.objects.create_superuser('admin', 'admin@example.com', 'admin123')
+        return HttpResponse("Superuser created ✅")
+    else:
+        return HttpResponse("Superuser already exists")
