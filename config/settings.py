@@ -10,9 +10,9 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/5.2/ref/settings/
 """
 import dj_database_url
-from decouple import config
 from pathlib import Path
 import os
+from decouple import config
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -38,10 +38,10 @@ INSTALLED_APPS = [
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
-    'django.contrib.staticfiles',
     'store',
     'cloudinary_storage',
     'cloudinary',
+    'django.contrib.staticfiles',
 ]
 
 MIDDLEWARE = [
@@ -135,9 +135,9 @@ PAYSTACK_SECRET_KEY = 'sk_test_47fa5f2d82a1c4b13856397ea2f39b00e5b0ca67'
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 
 CLOUDINARY_STORAGE = {
-    'CLOUD_NAME': config('CLOUDINARY_CLOUD_NAME'),
-    'API_KEY': config('CLOUDINARY_API_KEY'),
-    'API_SECRET': config('CLOUDINARY_API_SECRET')
+    'CLOUD_NAME': config('djsxtpfts'),
+    'API_KEY': config('179976935235438'),
+    'API_SECRET': config('IDpH3hs9aVIOemDir67w167xbzg')
 }
 
 DEFAULT_FILE_STORAGE = 'cloudinary_storage.storage.MediaCloudinaryStorage'
