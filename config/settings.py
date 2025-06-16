@@ -136,9 +136,9 @@ PAYSTACK_SECRET_KEY = 'sk_test_47fa5f2d82a1c4b13856397ea2f39b00e5b0ca67'
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 
 CLOUDINARY_STORAGE = {
-    'CLOUD_NAME': config('djsxtpfts'),
-    'API_KEY': config('179976935235438'),
-    'API_SECRET': config('IDpH3hs9aVIOemDir67w167xbzg')
+    'CLOUD_NAME': config('CLOUDINARY_CLOUD_NAME'),
+    'API_KEY': config('CLOUDINARY_API_KEY'),
+    'API_SECRET': config('CLOUDINARY_API_SECRET'),
 }
 
 DEFAULT_FILE_STORAGE = 'cloudinary_storage.storage.MediaCloudinaryStorage'
