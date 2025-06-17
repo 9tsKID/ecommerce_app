@@ -39,10 +39,9 @@ INSTALLED_APPS = [
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
-    'store',
-    'cloudinary_storage',
-    'cloudinary',
     'django.contrib.staticfiles',
+    'store',
+    'storages',
 ]
 
 MIDDLEWARE = [
@@ -135,14 +134,14 @@ PAYSTACK_SECRET_KEY = 'sk_test_47fa5f2d82a1c4b13856397ea2f39b00e5b0ca67'
 
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 
-CLOUDINARY_STORAGE = {
-    'CLOUD_NAME': config('CLOUDINARY_CLOUD_NAME'),
-    'API_KEY': config('CLOUDINARY_API_KEY'),
-    'API_SECRET': config('CLOUDINARY_API_SECRET'),
-}
+DEFAULT_FILE_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
 
-print("Cloudinary config loaded:", config('CLOUDINARY_CLOUD_NAME'))
+AWS_ACCESS_KEY_ID = config('SUPABASE_ACCESS_KEY')
+AWS_SECRET_ACCESS_KEY = config('SUPABASE_SECRET')
+AWS_STORAGE_BUCKET_NAME = config('SUPABASE_BUCKET')
+AWS_S3_REGION_NAME = 'auto'
+AWS_S3_ENDPOINT_URL = config('SUPABASE_URL') + '/storage/v1/s3'
+AWS_S3_FILE_OVERWRITE = False
+AWS_DEFAULT_ACL = None
+AWS_S3_ADDRESSING_STYLE = 'virtual'
 
-
-DEFAULT_FILE_STORAGE = 'cloudinary_storage.storage.MediaCloudinaryStorage'
-STATICFILES_STORAGE = 'cloudinary_storage.storage.StaticHashedCloudinaryStorage'
