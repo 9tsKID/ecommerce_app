@@ -4,7 +4,6 @@ from django.urls import path
 from .models import Product, Category, Order, OrderItem
 from django import forms
 from django.contrib import messages
-from django.utils.html import format_html
 
 
 class OrderItemInline(admin.TabularInline):
