@@ -13,7 +13,7 @@
     <div class="col-md-4 mb-4">
       <div class="card shadow-sm h-100">
         {% if product.image %}
-          <img src="{{ product.image.url }}" class="card-img-top" style="height: 200px; object-fit: contain; background-color: whitesmoke; padding: 10px;">
+          <img src="{{ product.image_url }}" class="card-img-top" style="height: 200px; object-fit: contain; background-color: whitesmoke; padding: 10px;">
         {% endif %}
         <div class="card-body bg-white">
           <h5 class="card-title text-primary">{{ product.name }}</h5>
