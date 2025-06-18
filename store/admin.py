@@ -38,8 +38,16 @@ def assign_category(modeladmin, request, queryset):
 assign_category.short_description = "Assign selected products to a category"
 
 class ProductAdmin(admin.ModelAdmin):
-    list_display = ['name', 'price']
-    fields = ['name', 'price', 'image_url']
+    list_display = ['name', 'price', 'preview']
+    fields = '__all__'  # ✅ show all fields in the admin form
+
+def preview(self, obj):
+    if obj.image_url:
+        return format_html('<img src="{}" width="100" height="100" style="object-fit:contain;" />', obj.image_url)
+    return "(No image)"
+
+preview.short_description = "Image"
+
 
 admin.site.register(Product, ProductAdmin)
 admin.site.register(Order, OrderAdmin)
