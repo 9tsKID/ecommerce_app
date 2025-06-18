@@ -38,7 +38,7 @@ def assign_category(modeladmin, request, queryset):
 assign_category.short_description = "Assign selected products to a category"
 
 class ProductAdmin(admin.ModelAdmin):
-    list_display = ['name', 'price', 'category']
+    list_display = ['name', 'price', 'category', 'image_url']
     actions = [assign_category]
 
 
