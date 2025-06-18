@@ -42,15 +42,7 @@ class ProductAdmin(admin.ModelAdmin):
     list_display = ['name', 'price', 'preview']
     fields = ['name', 'price', 'description', 'category', 'image_url']  # ✅ Add missing fields
 
-
-def preview(self, obj):
-    if obj.image_url:
-        return format_html('<img src="{}" width="100" height="100" style="object-fit:contain;" />', obj.image_url)
-    return "(No image)"
-
-preview.short_description = "Image"
-
-
+    
 admin.site.register(Product, ProductAdmin)
 admin.site.register(Order, OrderAdmin)
 admin.site.register(Category)
