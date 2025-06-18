@@ -39,7 +39,8 @@ assign_category.short_description = "Assign selected products to a category"
 
 class ProductAdmin(admin.ModelAdmin):
     list_display = ['name', 'price', 'preview']
-    fields = '__all__'  # ✅ show all fields in the admin form
+    fields = ['name', 'price', 'description', 'category', 'image_url']  # ✅ Add missing fields
+
 
 def preview(self, obj):
     if obj.image_url:
