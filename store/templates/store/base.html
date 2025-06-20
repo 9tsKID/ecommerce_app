@@ -14,7 +14,20 @@
 <nav style="background-color: #0d0864;" class="navbar navbar-expand-lg  mb-4 shadow">
   <div class="container-fluid">
     <a class="navbar-brand fw-bold" href="{% url 'store_home' %}"> 🛍️ <span style="color: #bf4341;">MyShop</span></a>
-    
+    <!-- Category Dropdown -->
+<div class="dropdown me-3">
+  <button class="btn btn-outline-light dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+    Categories
+  </button>
+  <ul class="dropdown-menu">
+    {% for cat in categories %}
+      <li><a class="dropdown-item" href="{% url 'category_products' cat.id %}">{{ cat.name }}</a></li>
+    {% endfor %}
+    <li><hr class="dropdown-divider"></li>
+    <li><a class="dropdown-item" href="{% url 'store_home' %}">All Products</a></li>
+  </ul>
+</div>
+
 
 
     <div class="d-flex align-items-center">

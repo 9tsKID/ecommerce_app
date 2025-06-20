@@ -97,7 +97,7 @@ def store_home(request, category_id=None):
     if query:
         products = products.filter(name__icontains=query)
 
-    paginator = Paginator(products, 9)  # ✅ Show 9 products per page
+    paginator = Paginator(products, 9)
     page_number = request.GET.get('page')
     page_obj = paginator.get_page(page_number)
 
@@ -106,6 +106,7 @@ def store_home(request, category_id=None):
         'products': page_obj,
         'categories': categories,
     })
+
 
 
 @login_required
