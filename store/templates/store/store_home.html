@@ -7,15 +7,7 @@
     <p>Showing results for "{{ request.GET.q }}"</p>
   {% endif %}
   <!-- Category Filter -->
-<div class="mb-4">
-  <strong>Filter by Category:</strong>
-  {% for cat in categories %}
-    <a href="{% url 'category_products' cat.id %}" class="btn btn-sm btn-outline-secondary me-2 mb-2">
-      {{ cat.name }}
-    </a>
-  {% endfor %}
-  <a href="{% url 'store_home' %}" class="btn btn-sm btn-outline-dark mb-2">All</a>
-</div>
+
 
 
   {% if products %}
