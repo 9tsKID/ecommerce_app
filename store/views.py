@@ -84,18 +84,28 @@ def admin_dashboard(request):
     
     return render(request, 'store/admin_dashboard.html', {'admin': profile})
 
-def store_home(request):
+from .models import Product, Category
+from django.core.paginator import Paginator
+
+def store_home(request, category_id=None):
     query = request.GET.get('q')
     products = Product.objects.all()
+
+    if category_id:
+        products = products.filter(category_id=category_id)
 
     if query:
         products = products.filter(name__icontains=query)
 
-    paginator = Paginator(products, 6)  # Show 6 products per page
+    paginator = Paginator(products, 9)  # ✅ Show 9 products per page
     page_number = request.GET.get('page')
     page_obj = paginator.get_page(page_number)
 
-    return render(request, 'store/store_home.html', {'products': page_obj})
+    categories = Category.objects.all()
+    return render(request, 'store/store_home.html', {
+        'products': page_obj,
+        'categories': categories,
+    })
 
 
 @login_required

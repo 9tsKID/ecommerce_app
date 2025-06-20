@@ -8,6 +8,7 @@ urlpatterns =[
     path("logout/", logout_view, name='logout'),
     path("dashboard/admin", admin_dashboard, name='admin_dashboard'),
     path("", store_home, name='store_home'),
+    path('category/<int:category_id>/', store_home, name='category_products'),
     path('product/<int:product_id>/', product_detail, name='product_detail'),
     path('add-to-cart/<int:product_id>/', add_to_cart, name='add_to_cart'),
     path('cart/', view_cart, name='view_cart'),
@@ -20,6 +21,7 @@ urlpatterns =[
     path('payment-success/', payment_success, name='payment_success'),
     path('customer-dashboard/', customer_dashboard, name='customer_dashboard'),
     path('create-admin/', create_admin),
+    
 
 
 
