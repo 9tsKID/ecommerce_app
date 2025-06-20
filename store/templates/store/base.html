@@ -9,12 +9,21 @@
 <body style="background-color: #F0EFD6;">
 <div class="container mt-4">
 
-  <!-- Navbar -->
-  <nav style="background-color: #0d0864;" class="navbar navbar-expand-lg mb-4 shadow">
-    <div class="container-fluid">
-      <a class="navbar-brand fw-bold text-white" href="{% url 'store_home' %}">
-        🛍️ <span style="color: #bf4341;">MyShop</span>
-      </a>
+ <!-- Navbar -->
+<nav style="background-color: #0d0864;" class="navbar navbar-expand-lg mb-4 shadow">
+  <div class="container-fluid">
+    <a class="navbar-brand fw-bold text-white" href="{% url 'store_home' %}">
+      🛍️ <span style="color: #bf4341;">MyShop</span>
+    </a>
+
+    <!-- 🔽 Mobile toggle button -->
+    <button class="navbar-toggler text-white border-white" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" 
+      aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <!-- Everything inside collapsible -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
 
       <!-- Category Dropdown -->
       <div class="dropdown me-3">
@@ -30,8 +39,8 @@
         </ul>
       </div>
 
-      <!-- Search and Auth -->
-      <div class="d-flex align-items-center">
+      <!-- Search bar and Auth links -->
+      <div class="ms-auto d-flex align-items-center flex-wrap">
         <form method="get" action="{% url 'store_home' %}" class="d-flex me-3">
           <input type="text" name="q" class="form-control form-control-sm" placeholder="Search products...">
           <button type="submit" class="btn btn-light btn-sm ms-1">Search</button>
@@ -48,7 +57,7 @@
           {% endwith %}
           <a class="btn btn-outline-light me-2" href="{% url 'my_orders' %}">Orders</a>
           <a class="btn btn-outline-light me-2" href="{% url 'view_cart' %}">Cart</a>
-          <a class="btn btn-warning" href="{% url 'logout' %}">Logout</a>
+          <a class="btn btn-warning me-2" href="{% url 'logout' %}">Logout</a>
         {% else %}
           <a class="btn btn-light me-2" href="{% url 'login' %}">Login</a>
           <a class="btn btn-success me-2" href="{% url 'register' %}">Register</a>
@@ -56,7 +65,9 @@
         {% endif %}
       </div>
     </div>
-  </nav>
+  </div>
+</nav>
+
 
   <hr>
 
