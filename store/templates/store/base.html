@@ -5,6 +5,8 @@
   <title>E-commerce Site</title>
   <!-- Bootstrap CSS -->
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <!-- Bootstrap Icons -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet">
 </head>
 <body style="background-color: #F0EFD6;">
 <div class="container mt-4">
@@ -17,10 +19,13 @@
     </a>
 
     <!-- 🔽 Mobile toggle button -->
-    <button class="navbar-toggler text-white border-white" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" 
-      aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <button class="navbar-toggler text-white border-white d-flex align-items-center" type="button"
+            data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
+      <span class="ms-2 text-white">Menu</span>
     </button>
+
 
     <!-- Everything inside collapsible -->
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
@@ -56,7 +61,15 @@
             {% endif %}
           {% endwith %}
           <a class="btn btn-outline-light me-2" href="{% url 'my_orders' %}">Orders</a>
-          <a class="btn btn-outline-light me-2" href="{% url 'view_cart' %}">Cart</a>
+          <a class="btn btn-outline-light position-relative me-2" href="{% url 'view_cart' %}">
+           <i class="bi bi-cart"></i>
+           <span class="ms-1">Cart</span>
+           {% if request.session.cart %}
+            <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
+             {{ request.session.cart|length }}
+            </span>
+           {% endif %}
+          </a>
           <a class="btn btn-warning me-2" href="{% url 'logout' %}">Logout</a>
         {% else %}
           <a class="btn btn-light me-2" href="{% url 'login' %}">Login</a>
