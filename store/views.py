@@ -16,6 +16,7 @@ from django.conf import settings
 from django.urls import reverse
 from django.http import JsonResponse
 from .models import Category
+from django.core.paginator import Paginator
 
 
 
@@ -85,17 +86,17 @@ def admin_dashboard(request):
 
 def store_home(request):
     query = request.GET.get('q')
-    category_id = request.GET.get('category')
-
     products = Product.objects.all()
 
     if query:
         products = products.filter(name__icontains=query)
 
-    if category_id:
-        products = products.filter(category_id=category_id)
+    paginator = Paginator(products, 6)  # Show 6 products per page
+    page_number = request.GET.get('page')
+    page_obj = paginator.get_page(page_number)
 
-    return render(request, 'store/store_home.html', {'products': products})
+    return render(request, 'store/store_home.html', {'products': page_obj})
+
 
 @login_required
 def customer_dashboard(request):
